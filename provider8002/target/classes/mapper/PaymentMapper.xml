@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lianwu.mapper.PaymentMapper">
+    <insert id="save" parameterType="com.lianwu.entities.Payment" useGeneratedKeys="true" keyProperty="id">
+        insert into payment (serial_number, create_time) values (#{serialNumber,jdbcType=VARCHAR}, now())
+    </insert>
+
+    <resultMap id="baseMap" type="com.lianwu.entities.Payment">
+        <result column="id" property="id" jdbcType="BIGINT"></result>
+        <result column="serial_number" property="serialNumber" jdbcType="VARCHAR"></result>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"></result>
+    </resultMap>
+
+    <select id="findBySerialNumber" resultMap="baseMap" parameterType="java.lang.String">
+         select
+         id,serial_number,create_time
+         from payment
+         where serial_number = #{serialNumber,jdbcType=VARCHAR}
+    </select>
+
+</mapper>

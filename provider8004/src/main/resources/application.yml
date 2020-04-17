@@ -6,4 +6,4 @@ spring:
     name: cloud-payment-service
   cloud:
     zookeeper:
-      connect-string: 106.54.63.211:2181
+      connect-string: 106.54.63.211:2181 # zookeeper服务器的地址

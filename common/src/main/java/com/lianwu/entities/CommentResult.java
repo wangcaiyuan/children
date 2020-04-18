@@ -22,7 +22,7 @@ public class CommentResult<T> implements Serializable {
 
     private T data;
 
-    private CommentResult(int code, String message){
+    public CommentResult(int code, String message){
         this(code, message, null);
     }
 

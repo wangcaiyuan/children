@@ -2,6 +2,7 @@ package com.lianwu.controller;
 
 import com.lianwu.entities.CommentResult;
 import com.lianwu.entities.Payment;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -31,5 +32,15 @@ public class ConsumerController {
     @GetMapping("/api/consumer/getConsumerInfo/{serialNumber}")
     public CommentResult getConsumerInfo(@PathVariable("serialNumber") String serialNumber){
         return restTemplate.getForObject(PAYMENT_URL+"/api/payment/getPaymentInfo/{serialNumber}", CommentResult.class, serialNumber);
+    }
+
+    @GetMapping("/api/consumer/getConsumerInfoNew/{serialNumber}")
+    public CommentResult<Payment> getConsumerInfoNew(@PathVariable("serialNumber") String serialNumber){
+        ResponseEntity<CommentResult> resultResponseEntity = restTemplate.getForEntity(PAYMENT_URL+"/api/payment/getPaymentInfo/"+serialNumber, CommentResult.class);
+        if(resultResponseEntity.getStatusCode().is2xxSuccessful()){
+            return resultResponseEntity.getBody();
+        }else{
+            return new CommentResult(400,"操作失败");
+        }
     }
 }

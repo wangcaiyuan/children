@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import javax.annotation.Resource;
+import java.util.concurrent.TimeUnit;
 
 @RestController
 public class PaymentController {
@@ -40,5 +41,15 @@ public class PaymentController {
         }else{
             return new CommentResult(400, "无查询数据结果"+serverPort, null);
         }
+    }
+
+    @GetMapping("/api/payment/getServerPort")
+    public String getServerPort(){
+        try {
+            TimeUnit.SECONDS.sleep(3);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return serverPort;
     }
 }

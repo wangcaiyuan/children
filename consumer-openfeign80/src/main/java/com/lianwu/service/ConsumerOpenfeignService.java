@@ -13,4 +13,7 @@ public interface ConsumerOpenfeignService {
 
     @GetMapping("/api/payment/getPaymentInfo/{serialNumber}")
     CommentResult getPaymentInfo(@PathVariable("serialNumber") String serialNumber);
+
+    @GetMapping("/api/payment/getServerPort")
+    String getServerPort();
 }

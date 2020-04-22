@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 @RestController
 public class PaymentController {
@@ -64,5 +65,15 @@ public class PaymentController {
             logger.info("host=="+serviceInstance.getHost()+"uri=="+serviceInstance.getUri());
         }
         return discoveryClient;
+    }
+
+    @GetMapping("/api/payment/getServerPort")
+    public String getServerPort(){
+        try {
+            TimeUnit.SECONDS.sleep(3);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return serverPort;
     }
 }

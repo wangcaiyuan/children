@@ -28,4 +28,9 @@ public class ConsumerController {
     public CommentResult<Payment> getConsumerInfoNew(@PathVariable("serialNumber") String serialNumber){
         return consumerOpenfeignService.getPaymentInfo(serialNumber);
     }
+
+    @GetMapping("/api/consumer/getServerPort")
+    public String getServerPort(){
+        return consumerOpenfeignService.getServerPort();
+    }
 }

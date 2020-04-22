@@ -18,6 +18,7 @@
         <module>provider8002</module>
         <module>eureka7002</module>
         <module>provider8004</module>
+        <module>consumer-openfeign80</module>
     </modules>
 
     <name>springcloud2020</name>

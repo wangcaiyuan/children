@@ -1,0 +1,33 @@
+server:
+  port: 90
+
+
+##服务名称
+spring:
+  application:
+    name: cloud-consumer-service
+
+eureka:
+  client:
+    #将自己注册到eureka，默认为true
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka
+# 设置feign客户端超时时间（OpenFeign默认支持ribbon）
+ribbon:
+  ReadTimeout: 5000 #读取资源的时间
+  ConnectTimeout: 5000 #建立连接的时间
+
+#logging:
+#  level:
+#    #feign日志以什么级别监控哪个接口
+#    com.lianwu.service.ConsumerOpenfeignService: debug
+logging:
+  level:
+    com.lianwu.service.ConsumerOpenfeignService: debug
+
+##是否开启断路器（默认的false）
+#feign:
+#  hystrix:
+#    enabled: false
